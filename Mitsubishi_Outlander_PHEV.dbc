@@ -1,0 +1,155 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: REAR_INVERTER VCU OBC_DCDC
+VAL_TABLE_ INV_RSDN_State_VT 1 "Not connected or grounded" 0 "+12V" ;
+VAL_TABLE_ TC_Device_Select_VT 5 "Generator and front motor" 4 "Generator only" 3 "Front motor (+ rear?)" 0 "No device" ;
+VAL_TABLE_ Magic_Msgs_2_MSB_VT 61 "Always" ;
+VAL_TABLE_ Magic_Msgs_1_MSB_VT 805306368 "Description for the value '0x0'" ;
+VAL_TABLE_ Magic_Msgs_1_LSB_VT 0 "Always" ;
+VAL_TABLE_ Heartbeat_LSB_VT -1845621744 "Driving" ;
+VAL_TABLE_ Heartbeat_MSB_VT 46649 "Charging" 5177 "Driving" ;
+
+
+BO_ 3221225472 VECTOR__INDEPENDENT_SIG_MSG: 0 Vector__XXX
+ SG_ Magic_Msgs_2_LSB : 0|8@1+ (1,0) [0|255] "" Vector__XXX
+ SG_ New_Signal_57 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_56 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_55 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_54 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_53 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_52 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_51 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+ SG_ New_Signal_50 : 0|8@1+ (1,0) [0|0] "" Vector__XXX
+
+BO_ 1843 INV_Status_4: 8 VCU
+ SG_ INV_Internal_Temp_3 : 56|8@1+ (1,-40) [-40|215] "" Vector__XXX
+ SG_ INV_Internal_Temp_2 : 24|8@1+ (1,-40) [-40|215] "" Vector__XXX
+ SG_ INV_Internal_Temp_1 : 8|8@1+ (1,-40) [-40|215] "" Vector__XXX
+ SG_ INV_Motor_Temp_4 : 16|8@1+ (1,-40) [-40|215] "" Vector__XXX
+ SG_ INV_Motor_Temp_3 : 0|8@1+ (1,-40) [-40|215] "" Vector__XXX
+
+BO_ 1842 INV_Status_3: 8 REAR_INVERTER
+ SG_ INV_Rotor_Angle : 32|8@1+ (1,0) [0|255] "%"  VCU
+ SG_ INV_MotorCurrPhase_2 : 23|16@0+ (1,-1000) [-1000|64535] ""  VCU
+ SG_ INV_MotorCurrPhase_1 : 7|16@0+ (1,-1000) [-1000|64535] ""  VCU
+
+BO_ 665 INV_Status_2: 8 REAR_INVERTER
+ SG_ INV_Peak_Motor_Temp : 0|8@1+ (1,-40) [-40|215] ""  VCU
+ SG_ INV_Motor_Temp_2 : 32|8@1+ (1,-40) [-40|215] ""  VCU
+ SG_ INV_Motor_Temp_1 : 8|8@1+ (1,-40) [-40|215] ""  VCU
+
+BO_ 649 INV_Status_1: 8 REAR_INVERTER
+ SG_ INV_RSDN_State : 58|1@1+ (1,0) [0|1] ""  VCU
+ SG_ INV_VCB_Voltage : 39|16@0+ (1,0) [0|65535] ""  VCU
+ SG_ INV_Torque_Report : 7|16@0+ (0.1,-1000) [-200|200] "nm"  VCU
+ SG_ INV_Rpm_Report : 23|16@0+ (1,-20000) [-10000|10000] ""  VCU
+
+BO_ 647 Torque_Control: 8 VCU
+ SG_ TC_Rear_Motor : 23|16@0+ (0.1,-1000) [-1000|5553.5] "nm"  REAR_INVERTER
+ SG_ TC_Generator : 39|16@0+ (0.1,-1000) [-1000|5553.5] "nm"  REAR_INVERTER
+ SG_ TC_Front_Motor : 7|16@0+ (0.1,-1000) [-1000|5553.5] "nm"  REAR_INVERTER
+ SG_ TC_Device_Select : 48|8@1+ (1,0) [0|255] ""  REAR_INVERTER
+
+BO_ 646 OBC_Control: 8 VCU
+ SG_ Magic_Msgs_2_MSB : 32|32@1+ (1,0) [0|4294967295] ""  REAR_INVERTER,OBC_DCDC
+ SG_ OBC_Voltage_Setpoint : 0|16@1+ (0.1,0) [0|6553.5] "V"  REAR_INVERTER,OBC_DCDC
+ SG_ OBC_Setpoint_Current : 16|8@1+ (0.1,0) [0|12] "A"  REAR_INVERTER,OBC_DCDC
+
+BO_ 881 Magic_Msgs_1: 8 VCU
+ SG_ Magic_Msgs_1_MSB : 32|32@1+ (1,0) [0|4294967295] ""  REAR_INVERTER
+ SG_ Magic_Msgs_1_LSB : 0|32@1+ (1,0) [0|4294967295] ""  REAR_INVERTER
+
+BO_ 645 Heartbeat: 8 VCU
+ SG_ Heartbeat_MSB : 32|32@1+ (1,0) [0|4294967295] ""  REAR_INVERTER,OBC_DCDC
+ SG_ Heartbeat_LSB : 0|32@1+ (1,0) [0|4294967295] ""  REAR_INVERTER,OBC_DCDC
+
+BO_ 906 OBC_Status_2: 8 OBC_DCDC
+ SG_ OBC_CP_Duty : 24|8@1+ (1,0) [0|100] "%"  VCU
+ SG_ OBC_VCB_Voltage : 16|8@1+ (2,0) [0|510] "V"  VCU
+ SG_ OBC_Temperature_4 : 8|8@1+ (1,-40) [-40|215] ""  VCU
+ SG_ OBC_Temperature_3 : 0|8@1+ (1,-40) [-40|215] ""  VCU
+
+BO_ 905 OBC_Status_1: 8 OBC_DCDC
+ SG_ OBC_Status_Pilot : 47|1@1+ (1,0) [0|1] ""  VCU
+ SG_ OBC_Status_Error : 44|1@1+ (1,0) [0|1] ""  VCU
+ SG_ OBC_Status_Charging : 43|1@1+ (1,0) [0|1] ""  VCU
+ SG_ OBC_Status_AC_Voltage_Present : 41|1@1+ (1,0) [0|1] ""  VCU
+ SG_ DCDC_Status_Requested : 46|1@1+ (1,0) [0|1] ""  VCU
+ SG_ OBC_Temperature_2 : 32|8@1+ (1,-40) [0|0] "degC"  VCU
+ SG_ OBC_Temperature_1 : 24|8@1+ (1,-40) [-40|215] "degC"  VCU
+ SG_ OBC_Supply_VCB_Current : 16|8@1+ (0.1,0) [0|25.5] ""  VCU
+ SG_ OBC_AC_Voltage : 8|8@1+ (1,0) [0|255] "V"  VCU
+ SG_ OBC_VCB_Voltage : 0|8@1+ (2,0) [0|510] "V"  VCU
+
+BO_ 887 DCDC_Status: 8 OBC_DCDC
+ SG_ DCDC_Status_Ready : 61|1@1+ (1,0) [0|1] ""  VCU
+ SG_ DCDC_Status_Operation : 57|1@1+ (1,0) [0|1] ""  VCU
+ SG_ DCDC_Status_Error : 56|1@1+ (1,0) [0|1] ""  VCU
+ SG_ DCDC_Temperature_3 : 48|8@1+ (1,-40) [-40|215] "degC"  VCU
+ SG_ DCDC_Temperature_2 : 40|8@1+ (1,-40) [-40|215] "degC"  VCU
+ SG_ DCDC_Temperature_1 : 32|8@1+ (1,-40) [-40|215] "degC"  VCU
+ SG_ DCDC_Supply_12V_Current : 16|16@1+ (0.1,0) [0|6553.5] "A"  VCU
+ SG_ DCDC_Supply_12V_Voltage : 0|16@1+ (0.01,0) [0|655.35] "V"  VCU
+
+
+
+CM_ BO_ 3221225472 "This is a message for not used signals, created by Vector CANdb++ DBC OLE DB Provider.";
+BA_DEF_ BO_  "Transmission_type" ENUM  "Cyclic","On request";
+BA_DEF_ BO_  "Cycle_time" INT 10 60000;
+BA_DEF_  "MultiplexExtEnabled" ENUM  "No","Yes";
+BA_DEF_  "BusType" STRING ;
+BA_DEF_DEF_  "Transmission_type" "Cyclic";
+BA_DEF_DEF_  "Cycle_time" 100;
+BA_DEF_DEF_  "MultiplexExtEnabled" "No";
+BA_DEF_DEF_  "BusType" "CAN";
+BA_ "Cycle_time" BO_ 1842 100;
+BA_ "Cycle_time" BO_ 665 100;
+BA_ "Cycle_time" BO_ 649 100;
+BA_ "Cycle_time" BO_ 647 50;
+BA_ "Cycle_time" BO_ 646 100;
+BA_ "Cycle_time" BO_ 881 100;
+BA_ "Cycle_time" BO_ 645 10;
+BA_ "Cycle_time" BO_ 906 100;
+BA_ "Cycle_time" BO_ 905 100;
+BA_ "Cycle_time" BO_ 887 100;
+VAL_ 649 INV_RSDN_State 1 "Not connected or grounded" 0 "+12V" ;
+VAL_ 647 TC_Device_Select 5 "Generator and front motor" 4 "Generator only" 3 "Front motor (+ rear?)" 0 "No device" ;
+VAL_ 646 Magic_Msgs_2_MSB 61 "Always" ;
+VAL_ 881 Magic_Msgs_1_MSB 805306368 "Description for the value '0x0'" ;
+VAL_ 881 Magic_Msgs_1_LSB 0 "Always" ;
+VAL_ 645 Heartbeat_MSB 46649 "Charging" 5177 "Driving" ;
+VAL_ 645 Heartbeat_LSB -1845621744 "Driving" ;
+
